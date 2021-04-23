@@ -1,0 +1,42 @@
+log/
+s3logs/
+logs/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.iml
+
+
+.DS_Store
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+
+nbdist/
+.nb-gradle/
+
+
+application.pid
+out/
+
+
+*.log
+
+
+
