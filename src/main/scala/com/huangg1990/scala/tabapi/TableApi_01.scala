@@ -30,7 +30,9 @@ object TableApi_01 {
         "'properties.bootstrap.servers' = '192.168.10.243:9092',\n  " +
         "'properties.group.id' = 'hgGroup',\n  " +
         "'scan.startup.mode' = 'earliest-offset',\n  " +
-        "'format' = 'csv'\n" +
+        "'format' = 'csv',\n" +
+        "'csv.ignore-parse-errors' = 'true',\n " +
+        "'csv.allow-comments' = 'true'\n " +
         ")"
 
 
@@ -38,8 +40,8 @@ object TableApi_01 {
 
 
     val orders: Table = bsTableEnv.from("t_person")
-    val result = orders.select($"user_id", $"user_name", $"ts")
-
+    val result = orders
+      .select($"user_id", $"user_name", $"ts")
     result.toAppendStream[(String, String, Long)].print("t1")
 
 
