@@ -38,7 +38,7 @@ object TableApi_01 {
 
 
     val orders: Table = bsTableEnv.from("t_person")
-    val result = orders.select($"user_id", $"user_name",$"ts")
+    val result = orders.select($"user_id", $"user_name", $"ts")
 
     result.toAppendStream[(String, String, Long)].print("t1")
 
