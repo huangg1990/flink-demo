@@ -41,6 +41,14 @@
             <artifactId>flink-connector-kafka_2.12</artifactId>
             <version>1.12.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-avro</artifactId>
+            <version>1.12.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-csv</artifactId>
