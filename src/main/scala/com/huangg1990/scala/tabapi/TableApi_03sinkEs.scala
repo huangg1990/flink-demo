@@ -3,10 +3,9 @@ package com.huangg1990.scala.tabapi
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.table.api.bridge.scala.{StreamTableEnvironment, tableConversions}
 import org.apache.flink.table.api.EnvironmentSettings
-import org.apache.flink.streaming.api.scala._
 import org.apache.flink.table.api._
 import org.apache.flink.table.descriptors.{Csv, Elasticsearch, FileSystem, Json, Schema}
-
+import org.apache.flink.table.typeutils.TypeCheckUtils
 // case class SensorReading(id: String, timestamp: Long, temperature: Double)
 
 object TableApi_03sinkEs {
@@ -63,7 +62,7 @@ object TableApi_03sinkEs {
 
     table3.executeInsert("esOutputTable")
 
-    env.execute("sink es 6.* test")
+    env.execute("sink es 6 test")
   }
 
 }

@@ -58,6 +58,17 @@
         <!-- table api -->
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner_2.12</artifactId>
+            <version>${flink.ver}</version>
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <artifactId>slf4j-api</artifactId>-->
+            <!--                    <groupId>org.slf4j</groupId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-planner-blink_2.12</artifactId>
             <version>${flink.ver}</version>
         </dependency>
@@ -73,23 +84,13 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-table-planner_2.12</artifactId>
-            <version>${flink.ver}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-elasticsearch6_2.12</artifactId>
             <version>${flink.ver}</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-elasticsearch-base -->
         <dependency>
             <groupId>org.apache.flink</groupId>
