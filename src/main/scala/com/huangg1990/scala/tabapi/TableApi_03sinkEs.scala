@@ -1,11 +1,11 @@
 package com.huangg1990.scala.tabapi
 
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
-import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
+import org.apache.flink.table.api.bridge.scala.{StreamTableEnvironment, tableConversions}
 import org.apache.flink.table.api.EnvironmentSettings
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.table.api._
-import org.apache.flink.table.descriptors.{Csv,Json, Elasticsearch, FileSystem, Schema}
+import org.apache.flink.table.descriptors.{Csv, Elasticsearch, FileSystem, Json, Schema}
 
 // case class SensorReading(id: String, timestamp: Long, temperature: Double)
 
@@ -43,19 +43,25 @@ object TableApi_03sinkEs {
       .withFormat(new Json())
       .withSchema(new Schema()
         .field("id", DataTypes.STRING())
-        .field("count", DataTypes.BIGINT())
+        .field("ct", DataTypes.BIGINT())
         .field("max_temp", DataTypes.DOUBLE())
       ).createTemporaryTable("esOutputTable")
 
+    val aggsql =
+      """
+        |select
+        |id
+        |,count(id) as ct
+        |,max(temp) as max_temp
+        |from fileInputTable
+        |group by id
+        |""".stripMargin
 
-    val fileInputTable = tableEnv.from("fileInputTable")
+    val table3 = tableEnv.sqlQuery(aggsql)
 
-    val aggTable = fileInputTable
-      .orderBy($"id")
-      .select($"id", $"id".count().as("count"), $"temp".max().as("max_temp"))
+    //table3.toRetractStream[(String,Long,Double)].print("res")
 
-
-    aggTable.insertInto("esOutputTable")
+    table3.executeInsert("esOutputTable")
 
     env.execute("sink es 6.* test")
   }
