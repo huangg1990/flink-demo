@@ -8,10 +8,12 @@ object HelloWorld {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(1)
 
-    val dataStream: DataStream[String] = env.socketTextStream("192.168.199.250", 7777)
+    val dataStream: DataStream[String] = env.socketTextStream("127.0.0.1", 7777)
 
     val resDataStream = dataStream
-      .flatMap(l => {  l.split(" ")})
+      .flatMap(l => {
+        l.split(" ")
+      })
       .map(w => (w, 1))
       .keyBy(_._1)
       .sum(1)

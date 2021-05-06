@@ -13,9 +13,9 @@
         <maven.compiler.source.version>1.8</maven.compiler.source.version>
         <maven.compiler.target.version>1.8</maven.compiler.target.version>
         <encoding>UTF-8</encoding>
-        <scala.version>2.12.12</scala.version>
+        <scala.version>2.12.13</scala.version>
         <scala.compat.version>2.11</scala.compat.version>
-        <flink.ver>1.12.2</flink.ver>
+        <flink.ver>1.10.1</flink.ver>
     </properties>
 
     <dependencies>
