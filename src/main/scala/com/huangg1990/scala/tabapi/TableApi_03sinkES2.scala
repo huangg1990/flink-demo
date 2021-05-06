@@ -1,10 +1,5 @@
 package com.huangg1990.scala.tabapi
 
-//import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
-//import org.apache.flink.table.api.DataTypes
-//import org.apache.flink.table.api.scala.StreamTableEnvironment
-//import org.apache.flink.table.descriptors._
-//import org.apache.flink.table.api._
 
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.table.api.scala.StreamTableEnvironment
