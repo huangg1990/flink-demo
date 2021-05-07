@@ -13,6 +13,17 @@ import org.apache.flink.table.api.scala._
  * mysql -uroot -p123456
  * grant all privileges on *.* to root@'%' identified by "password";
  * flush privileges;
+
+-- ----------------------------
+-- Table structure for temp_count
+-- ----------------------------
+DROP TABLE IF EXISTS `temp_count`;
+CREATE TABLE `temp_count` (
+  `id` varchar(64) NOT NULL,
+  `cnt` bigint(10) DEFAULT NULL,
+  `max_temp` double(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
  *
  */
 object TableApi_04sinkMySql {
