@@ -11,7 +11,6 @@ import org.apache.flink.table.descriptors.{Csv, Elasticsearch, FileSystem, Json,
 /**
  *
   docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:6.8.5
-
  * http://127.0.0.1:9200/hg-test/_search
  * 查看数据
  */
