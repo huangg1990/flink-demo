@@ -137,6 +137,8 @@
     <orderEntry type="library" name="Maven: org.elasticsearch.plugin:aggs-matrix-stats-client:6.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-connector-elasticsearch-base_2.12:1.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-json:1.10.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.flink:flink-jdbc_2.12:1.10.1" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.13" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-compiler:2.12.13" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-xml_2.12:1.0.6" level="project" />
