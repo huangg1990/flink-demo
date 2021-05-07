@@ -1,0 +1,37 @@
+
+bin/kafka-console-consumer.sh --topic shake_events --from-beginning --bootstrap-server 127.0.0.1:9092
+
+bin/kafka-console-consumer.sh --topic shake-events --from-beginning --bootstrap-server 127.0.0.1:9092
+
+bin/kafka-topics.sh --describe --topic shake_events --bootstrap-server 127.0.0.1:9092
+
+bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --list
+
+bin/kafka-topics.sh --describe --topic __consumer_offsets --bootstrap-server 127.0.0.1:9092
+
+nohup bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
+
+bin/kafka-topics.sh --create --bootstrap-server 127.0.0.1:9092 --replication-factor 2 --partitions 2 --topic shake-events
+
+bin/kafka-topics.sh --describe --topic shake-events --bootstrap-server 127.0.0.1:9092
+
+查看各个patition消息的最大位移
+bin/kafka-run-class.sh kafka.tools.GetOffsetShell --topic shake_events --time -1 --bootstrap-server 127.0.0.1:9092
+
+查看各个partition消息的最小位移
+bin/kafka-run-class.sh kafka.tools.GetOffsetShell --topic shake_events --time -2 --bootstrap-server 127.0.0.1:9092
+
+nohup  java  -Dserverno=1  -Duser.timezone=GMT+08    -Dspring.profiles.active=test -jar ytb-download-0.0.1-SNAPSHOT.jar
+ >/dev/null 2>&1 &
+
+bin/kafka-topics.sh --create --bootstrap-server 127.0.0.1:9092 --replication-factor 3 --partitions 2 --topic hg-person
+bin/kafka-topics.sh --create --bootstrap-server 127.0.0.1:9092 --replication-factor 1 --partitions 1 --topic hg-person
+
+bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic hg-person
+Dan,29,1619313960156
+
+bin/kafka-topics.sh --describe --topic config_events --bootstrap-server 127.0.0.1:9092
+
+
+--
+nohup bin/kafka-server-start.sh config/server.properties  >/dev/null 2>&1 &

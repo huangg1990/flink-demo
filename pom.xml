@@ -83,8 +83,6 @@
             <version>${flink.ver}</version>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-elasticsearch6_2.12</artifactId>
