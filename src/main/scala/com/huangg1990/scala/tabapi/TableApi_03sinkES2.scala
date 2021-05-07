@@ -9,9 +9,12 @@ import org.apache.flink.table.descriptors.{Csv, Elasticsearch, FileSystem, Json,
 
 
 /**
-  * http://127.0.0.1:9200/hg-test/_search
-  * 查看数据
-  */
+ *
+  docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:6.8.5
+
+ * http://127.0.0.1:9200/hg-test/_search
+ * 查看数据
+ */
 object TableApi_03sinkES2 {
   def main(args: Array[String]): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
@@ -19,7 +22,8 @@ object TableApi_03sinkES2 {
 
     val tableEnv = StreamTableEnvironment.create(env)
 
-    val inputFilePath = "/Users/gwk/Downloads/huangg/gitroot/flink-demo/src/main/data/sensorreading.txt"
+    val inputFilePath = "/Users/tongzhou/test_code/flink-demo/src/main/data/sensorreading.txt"
+      //"/Users/gwk/Downloads/huangg/gitroot/flink-demo/src/main/data/sensorreading.txt"
 
     tableEnv.connect(new FileSystem().path(inputFilePath))
       .withFormat(new Csv())
