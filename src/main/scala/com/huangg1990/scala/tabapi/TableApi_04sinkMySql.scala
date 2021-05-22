@@ -1,7 +1,7 @@
 package com.huangg1990.scala.tabapi
 
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
-import org.apache.flink.table.api.{DataTypes}
+import org.apache.flink.table.api.{DataTypes, TableEnvironment}
 import org.apache.flink.table.api.scala.StreamTableEnvironment
 import org.apache.flink.table.descriptors.{Csv, FileSystem, Schema}
 import org.apache.flink.streaming.api.scala._
@@ -33,7 +33,8 @@ object TableApi_04sinkMySql {
 
     val tableEnv = StreamTableEnvironment.create(env)
 
-    val inputPath = "/Users/tongzhou/test_code/flink-demo/src/main/data/sensorreading.txt"
+    val inputPath = "/Users/gwk/Downloads/huangg/gitroot/flink-demo/src/main/data/sensorreading.txt"
+      //"/Users/tongzhou/test_code/flink-demo/src/main/data/sensorreading.txt"
 
     tableEnv.connect(new FileSystem().path(inputPath))
       .withFormat(new Csv())
@@ -79,7 +80,11 @@ object TableApi_04sinkMySql {
     //resTable.toRetractStream[(String, Long, Double)].print("res")
 
     //sink mysql
-    resTable.insertInto("mysql_outputTable")
+    //resTable.insertInto("mysql_outputTable")
+
+    val explainAtion:String = tableEnv.explain(resTable)
+
+    print(explainAtion)
 
     env.execute("table api sink mysql")
   }
